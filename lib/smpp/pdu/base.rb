@@ -86,6 +86,7 @@ module Smpp::Pdu
       length = 16 + body.length
       @command_id = command_id
       @command_status = command_status
+      body.force_encoding('ASCII-8BIT')
       @body = body
       @sequence_number = seq
       @data = fixed_int(length) + fixed_int(command_id) + fixed_int(command_status) + fixed_int(seq) + body   
